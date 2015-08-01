@@ -20,8 +20,7 @@
 %% ===================================================================
 
 start(_StartType, _StartArgs) ->
-    hackney_deps:ensure(),
-    ensure_deps_started(),
+    _ = ensure_deps_started(),
     hackney_sup:start_link().
 
 stop(_State) ->
@@ -30,16 +29,13 @@ stop(_State) ->
 
 ensure_deps_started() ->
     {ok, Deps} = application:get_key(hackney, applications),
-    true = lists:all(fun ensure_started/1, Deps).
+    _ = [ensure_started(A) || A <- Deps],
+    ok.
+
 ensure_started(App) ->
     case application:start(App) of
-        ok ->
-            true;
-        {error, {already_started, App}} ->
-            true;
-        Else ->
-            error_logger:error_msg("Couldn't start ~p: ~p", [App, Else]),
-            Else
+        ok -> ok;
+        {error, {already_started, App}} -> ok
     end.
 
 

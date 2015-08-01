@@ -26,8 +26,7 @@ Main features:
 - Optional socket pool
 - REST syntax: `hackney:Method(URL)` (where a method can be get, post, put, delete, ...)
 
-**Supported versions** of Erlang are R16B03-1, 17.3.4 and above. It is
-reported to work with R14B04 and R15B03-1.
+**Supported versions** of Erlang are R16B03-1, 17.3.4 and above.
 
 **WARNING**: Erlang 17.3 and 17.3.1 have a broken SSL module which
 prevents the usage of SSL connection with some servers. You **must** upgrade
