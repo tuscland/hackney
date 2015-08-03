@@ -52,10 +52,10 @@ mkcert:
 
 GEN_URL = http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 GEN_FILE = mime.types
-GEN_SRC = src/hackney_lib/hackney_mimetypes.erl.src
-GEN_OUT = src/hackney_lib/hackney_mimetypes.erl
+GEN_SRC = src/mime/hackney_mimetypes.erl.src
+GEN_OUT = src/mime/hackney_mimetypes.erl
 
-gen:
+mimetypes:
 	@wget -qO $(GEN_FILE) $(GEN_URL)
 	@cat $(GEN_SRC) \
 		| head -n `grep -n "%% GENERATED" $(GEN_SRC) | cut -d : -f 1` \
